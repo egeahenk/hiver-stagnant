@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,16 +20,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
     #region variable
 
+
+
     #region bools
-    
+
+        public bool isKnifeCollected = false;
+        public bool isKnifeUsed = false;
+
+        public bool isFrameOpen = false;
+
     #endregion
 
-    #region integers
+    #region GameObject
+
+        public GameObject frame; 
+        public GameObject EndGameScreen;
 
     #endregion
 
     #endregion
+
+
+    private void Update()
+    {
+    }
 
 }
