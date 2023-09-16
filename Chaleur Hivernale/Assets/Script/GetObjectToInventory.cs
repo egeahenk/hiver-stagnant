@@ -9,48 +9,38 @@ public class GetObjectToInventory : MonoBehaviour
     public GameManager gm;
     public string itemTag; 
 
-    private bool isCollected = false;
 
-    private void OnMouseDown()
-    {
-        if (gameObject.CompareTag(itemTag))
+        public void CollectObject(string itemTag)
         {
+            Debug.Log("CollectObject called with tag: " + itemTag); // Add this line for debugging
+
             if (itemTag == "Knife")
             {
+                Debug.Log("Knife Collection Activted");
                 GameManager.Instance.isKnifeCollected = true;
+                Destroy(gameObject);
             }
 
             if (itemTag == "Frame")
             {
                 GameManager.Instance.frame.SetActive(true);
-                GameManager.Instance.isFrameOpen=true;
+                GameManager.Instance.isFrameOpen = true;
             }
 
             if (itemTag == "Corpse")
             {
-                if(GameManager.Instance.isKnifeCollected)
+                if (GameManager.Instance.isKnifeCollected)
                 {
                     GameManager.Instance.EndGameScreen.SetActive(true);
                 }
             }
 
-            Destroy(gameObject);
-        }
-    }
+                    if(GameManager.Instance.isFrameOpen)
+                    {
+                        GameManager.Instance.frame.SetActive(false);
+                    }
 
-    void Update()
-    {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            OnMouseDown();
             
-            if(GameManager.Instance.isFrameOpen)
-            {
-                GameManager.Instance.frame.SetActive(false);
-            }
         }
-
-    }
 
 }
